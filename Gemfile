@@ -11,7 +11,6 @@ group :development, :test do
 end
 group :production do
   # Use postgreSQL as the database for Active Record for production
-  # gem 'mysql2'
   gem 'pg'
 end
 # Use SCSS for stylesheets
