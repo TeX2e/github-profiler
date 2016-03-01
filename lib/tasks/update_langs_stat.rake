@@ -5,5 +5,5 @@ task :update_langs_stat => :environment do
   datafile = 'langs_stat.json'
 
   LangsStat.update_repo_langs_data(datafile)
-  puts 'done.'
+  puts 'done update.'
 end
