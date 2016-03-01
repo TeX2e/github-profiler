@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   get '/stat' => 'stat#index'
+  get '/stat/update' => 'stat#update'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
