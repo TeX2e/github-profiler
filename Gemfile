@@ -10,8 +10,9 @@ group :development, :test do
   gem 'sqlite3'
 end
 group :production do
-  # Use mysql2 as the database for Active Record for production
-  gem 'mysql2'
+  # Use postgreSQL as the database for Active Record for production
+  # gem 'mysql2'
+  gem 'pg'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
