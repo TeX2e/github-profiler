@@ -1,11 +1,4 @@
 
-<% if !@langs_stat.blank? %>
-  <% @langs_stat.each do |lang, repo_list| %>
-    <div class="lang"><%= lang %></div>
-    <% repo_list.each do |repo| %>
-      <div class="stat"><%= repo['loc'] %> (in <%= repo['name'] %>)</div>
-    <% end %>
-  <% end %>
-<% else %>
-  nothing to show
-<% end %>
+A statistic of <a href="https://github.com/TeX2e">TeX2e</a>'s github repository
+
+<div class="langs-stat"></div>

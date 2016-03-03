@@ -29,6 +29,8 @@ module LangsStat
     client.repos.each do |repo|
       next if repo.fork
       threads << Thread.new(repo) do |repo|
+        # create a hash
+        #   { :name, :url, :langs }
         repos.push({
             name:  repo.full_name, # => "TeX2e/repo"
             url:   repo.html_url,  # => "http://github.com/TeX2e/repo"
@@ -43,6 +45,13 @@ module LangsStat
 
   # convert repositories info to languages statistics
   def self.convert_to_langs_stat(repos_lang_loc)
+    # create a hash
+    #   {
+    #     'LangName': [
+    #       { :name, :loc },
+    #       { :name, :loc }, ...
+    #     ]
+    #   }
     langs_stat = {}
     repos_lang_loc.each do |repo|
       repo_name = repo[:name]
