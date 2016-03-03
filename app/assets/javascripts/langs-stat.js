@@ -70,8 +70,6 @@ function drawPartitionGraph() {
             });
         });
 
-        // .replace(/^.*\//, '')
-
         var partition = d3.layout.partition()
             .children(function (d) {
                 return Array.isArray(d.children) ? d.children : null;
@@ -195,7 +193,7 @@ function drawPartitionGraph() {
                     return i * 30;
                 })
                 .text(function (d) {
-                    var name = d.name;
+                    var name = d.name.replace(/^.*\//, '');
                     return name;
                 });
         }
