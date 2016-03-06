@@ -16,8 +16,14 @@ module LangsStat
 
   # extract a language LOC on github repositories
   def self.repos_lang_loc
+    # create the array of hashes
+    #   [
+    #     { :name, :url, :langs },
+    #     { :name, :url, :langs }, ...
+    #   ]
     repos = []
 
+    # github API via Octokit (ruby gem)
     if File.exist?('github_access_token')
       access_token = File.read('github_access_token').chomp
     elsif ENV['GITHUB_ACCESS_TOKEN']
@@ -25,6 +31,8 @@ module LangsStat
     end
     client = Octokit::Client.new(access_token: access_token);
 
+    # take each repositories infomation
+    # create threads to do parallel processing
     threads = []
     client.repos.each do |repo|
       next if repo.fork
@@ -44,22 +52,27 @@ module LangsStat
   end
 
   # convert repositories info to languages statistics
-  def self.convert_to_langs_stat(repos_lang_loc)
-    # create a hash
+  def self.convert_to_langs_stat(repos)
+    # create a hash from self.repos_lang_loc()
     #   {
-    #     'LangName': [
-    #       { :name, :loc },
-    #       { :name, :loc }, ...
-    #     ]
+    #     'Language': [
+    #       { :name, :url, :loc },
+    #       { :name, :url, :loc }, ...
+    #     ],
+    #     'Language': [
+    #       ...
+    #     ],
     #   }
     langs_stat = {}
-    repos_lang_loc.each do |repo|
+    repos.each do |repo|
       repo_name = repo[:name]
+      repo_url  = repo[:url]
 
       repo[:langs].each do |lang, loc|
         langs_stat[lang] || langs_stat[lang] = []
         langs_stat[lang].push({
           name: repo_name,
+          url:  repo_url,
           loc:  loc,
         })
       end
