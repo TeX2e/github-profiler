@@ -5,7 +5,6 @@ $(document).ready(function () {
 });
 
 function drawPartitionGraph() {
-    console.log('hello!');
     // Use d3.js as JavaScript library for manipulating documents based on data.
     // Further information is available at
     // https://github.com/mbostock/d3/wiki
@@ -53,7 +52,8 @@ function drawPartitionGraph() {
         })
 
     // --- draw partition graph ---
-    d3.json('stat.json', function (stats) {
+    var deferredRequireJSON = $.getJSON('stat.json', $.noop);
+    deferredRequireJSON.done(function (stats) {
         // Use d3.layout.partition
         // Further information is available at
         // https://github.com/mbostock/d3/wiki/Partition-Layout#partition
@@ -115,7 +115,7 @@ function drawPartitionGraph() {
 
         updateLabels(hierarchy);
 
-        // --- on click ---
+        // --- set on-click event handler ---
 
         var center = g.append('text')
             .attr('class', 'stat-center')
@@ -188,7 +188,12 @@ function drawPartitionGraph() {
 
             d3.select('svg g.labels').selectAll('text')
                 .data(dataset)
-              .enter().append('text')
+              .enter()
+                .append('a')
+                .attr('xlink:href', function (d) {
+                    return d.url;
+                })
+                .append('text')
                 .attr('y', function (d, i) {
                     return i * 30;
                 })
@@ -199,3 +204,10 @@ function drawPartitionGraph() {
         }
     });
 };
+
+// var LangStatDrawer = function() {
+//     this.width = 800;
+//     this.height = 500;
+//     this.maxRadius = Math.min(width, height) / 2;
+//     this.centerCircleSize = 60;
+// }
