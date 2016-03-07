@@ -29,4 +29,8 @@ class StatController < ApplicationController
 
     render text: result
   end
+
+  # def js
+  #   render js: File.read('app/assets/javascripts/stat.js')
+  # end
 end
