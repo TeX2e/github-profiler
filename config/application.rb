@@ -23,9 +23,9 @@ module Tex2eGithubProfiler
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    # # Disable assets pipeline (for heroku)
-    # config.assets.enabled = false
-    # config.assets.initialize_on_precompile = false
+    # Disable assets pipeline (for heroku)
+    config.assets.enabled = false
+    config.assets.initialize_on_precompile = false
 
     # For Heroku
     config.serve_static_files = true
