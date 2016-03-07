@@ -31,7 +31,7 @@ class StatController < ApplicationController
   end
 
   def stat_js
-      render text: File.read('/app/assets/javascripts/stat.js')
+    render text: File.read('app/assets/javascripts/stat.js')
   end
 
 end
