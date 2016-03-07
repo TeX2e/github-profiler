@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   get '/stat' => 'stat#index'
   get '/stat/update' => 'stat#update'
-  get '/assets/stat.js' => 'stat#stat_js'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

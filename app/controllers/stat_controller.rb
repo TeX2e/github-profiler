@@ -29,9 +29,4 @@ class StatController < ApplicationController
 
     render text: result
   end
-
-  def stat_js
-    render 'stat'
-  end
-
 end
