@@ -26,5 +26,8 @@ module Tex2eGithubProfiler
     # # Disable assets pipeline (for heroku)
     # config.assets.enabled = false
     # config.assets.initialize_on_precompile = false
+
+    # For Heroku
+    config.serve_static_assets = true
   end
 end
