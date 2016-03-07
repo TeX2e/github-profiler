@@ -55,3 +55,6 @@ end
 
 # Use octokit for github api
 gem "octokit", "~> 4.0"
+
+# For Heroku
+gem 'rails_12factor', group: :production
