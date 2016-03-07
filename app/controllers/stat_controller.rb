@@ -3,6 +3,10 @@ require 'json'
 class StatController < ApplicationController
   before_action :init
 
+  def init
+    @datafile = 'langs_stat.json'
+  end
+
   def index
     @langs_stat = JSON.load(File.read(@datafile))
 
@@ -26,8 +30,8 @@ class StatController < ApplicationController
     render text: result
   end
 
-  private
-    def init
-      @datafile = 'langs_stat.json'
-    end
+  def stat_js
+      render text: File.read('/app/assets/javascripts/stat.js')
+  end
+
 end
