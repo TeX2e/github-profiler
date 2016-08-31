@@ -28,6 +28,7 @@ module Tex2eGithubProfiler
     config.assets.initialize_on_precompile = false
 
     # For Heroku
-    config.serve_static_files = true
+    #config.serve_static_files = true # rails 4.2
+    config.public_file_server.enabled = true
   end
 end
